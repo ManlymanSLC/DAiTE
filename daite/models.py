@@ -59,3 +59,9 @@ class ChatSession(Base, TimestampMixin):
     user_a_id: Mapped[uuid4] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
     user_b_id: Mapped[uuid4] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
 
+    last_message: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    status: Mapped[str] = mapped_column(String, nullable=False, default="active")
+
+    user_a: Mapped[User] = relationship("User", foreign_keys=[user_a_id])
+    user_b: Mapped[User] = relationship("User", foreign_keys=[user_b_id])
+

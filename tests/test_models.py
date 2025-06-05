@@ -14,3 +14,7 @@ def test_import(module_name):
     assert hasattr(module, 'Preference')
     assert hasattr(module, 'MatchQueue')
     assert hasattr(module, 'ChatSession')
+
+    ChatSession = module.ChatSession
+    assert hasattr(ChatSession, 'last_message')
+    assert hasattr(ChatSession, 'status')
